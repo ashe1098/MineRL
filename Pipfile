@@ -7,7 +7,7 @@ verify_ssl = true
 
 [packages]
 crowdai-api = "*"
-minerl = "*"
+minerl = {editable = true,git = "https://github.com/minerllabs/minerl"}
 coloredlogs = "*"
 matplotlib = "*"
 opencv-python = "*"

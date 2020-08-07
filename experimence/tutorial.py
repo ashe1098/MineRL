@@ -75,44 +75,44 @@ def kmeans():
     print ('Distortion: %.2f'% kmeans.inertia_)  # 小さい方がいい（としか言えない）．0が最適
 
 
-    # 図やグラフを図示するためのライブラリをインポートする。
-    # import matplotlib
-    # matplotlib.use('TkAgg')  # 古いバージョンだとbackend: macosxに対応していないので，指定し直す
-    import matplotlib.pyplot as plt
-    from pandas import plotting # 高度なプロットを行うツールのインポート
-    #import sklearn #機械学習のライブラリ
-    from sklearn.decomposition import PCA #主成分分析器
-    labels = kmeans.labels_
-    #主成分分析の実行
-    # 64次元特徴を2次元にする
-    pca = PCA(n_components=2)
-    pca.fit(kmeans_acts)
-    pca_data = pca.fit_transform(kmeans_acts)
+    # # 図やグラフを図示するためのライブラリをインポートする。
+    # # import matplotlib
+    # # matplotlib.use('TkAgg')  # 古いバージョンだとbackend: macosxに対応していないので，指定し直す
+    # import matplotlib.pyplot as plt
+    # from pandas import plotting # 高度なプロットを行うツールのインポート
+    # #import sklearn #機械学習のライブラリ
+    # from sklearn.decomposition import PCA #主成分分析器
+    # labels = kmeans.labels_
+    # #主成分分析の実行
+    # # 64次元特徴を2次元にする
+    # pca = PCA(n_components=2)
+    # pca.fit(kmeans_acts)
+    # pca_data = pca.fit_transform(kmeans_acts)
 
-    from colorsys import hls_to_rgb
-    def get_distinct_colors(n):
-        colors = []
-        for i in np.arange(0., 360., 360. / n):
-            h = i / 360.
-            l = (50 + np.random.rand() * 10) / 100.
-            s = (90 + np.random.rand() * 10) / 100.
-            colors.append(hls_to_rgb(h, l, s))
-        return colors
+    # from colorsys import hls_to_rgb
+    # def get_distinct_colors(n):
+    #     colors = []
+    #     for i in np.arange(0., 360., 360. / n):
+    #         h = i / 360.
+    #         l = (50 + np.random.rand() * 10) / 100.
+    #         s = (90 + np.random.rand() * 10) / 100.
+    #         colors.append(hls_to_rgb(h, l, s))
+    #     return colors
     
-    # それぞれに与える色を決める。
-    color_codes = get_distinct_colors(NUM_CLUSTERS)
-    # サンプル毎に色を与える。
-    colors = [color_codes[x] for x in labels]
-    # クラスタリング結果のプロット
-    plt.figure()
-    plt.scatter(pca_data[:,0], pca_data[:,1], c=colors)
-    # for i in range(pca_data.shape[0]):  # 上と同じ
-    #     plt.scatter(pca_data[i,0], pca_data[i,1], c=color_codes[int(labels[i])])
-    plt.title("Principal Component Analysis")
-    plt.xlabel("The first principal component score")
-    plt.ylabel("The second principal component score")
-    plt.savefig("dpi_scatter.png", format="png", dpi=300)
-    plt.show()
+    # # それぞれに与える色を決める。
+    # color_codes = get_distinct_colors(NUM_CLUSTERS)
+    # # サンプル毎に色を与える。
+    # colors = [color_codes[x] for x in labels]
+    # # クラスタリング結果のプロット
+    # plt.figure()
+    # plt.scatter(pca_data[:,0], pca_data[:,1], c=colors)
+    # # for i in range(pca_data.shape[0]):  # 上と同じ
+    # #     plt.scatter(pca_data[i,0], pca_data[i,1], c=color_codes[int(labels[i])])
+    # plt.title("Principal Component Analysis")
+    # plt.xlabel("The first principal component score")
+    # plt.ylabel("The second principal component score")
+    # plt.savefig("dpi_scatter.png", format="png", dpi=300)
+    # plt.show()
 
 
     i, net_reward, done, env = 0, 0, False, gym.make('MineRLTreechopVectorObf-v0')
@@ -127,17 +127,9 @@ def kmeans():
                 'vector': kmeans.cluster_centers_[(int)((i/4) % NUM_CLUSTERS)]  # 4フレームごとにクラスタリングした行動を順にとる
             }
 
-            obs, reward, done, info = env.step(action)  # actionを組み込みのものにしてもダメ
-            # random_act = env.action_space.noop()
-            
-            # random_act['camera'] = [0, 0.1*obs["compassAngle"]]
-            # random_act['back'] = 0
-            # random_act['forward'] = 1
-            # random_act['jump'] = 1
-            # random_act['attack'] = 1
-            # obs, reward, done, info = env.step(random_act)
+            obs, reward, done, info = env.step(action)
 
-            # env.render()
+            env.render()
 
             if reward > 0:
                 print("+{} reward!".format(reward))
@@ -270,7 +262,7 @@ def data_check():
     for obs,  act, rew,  next_obs, done in data.batch_iter(batch_size=2, seq_len=5, num_epochs=1):
         # Do something
         correct_len = len(rew)
-        # print("Obs shape:", obs)  # pov, vector
+        print("Obs shape:", obs)  # pov, vector
         print("Act shape:", act)  # vector
         # print("Rew shape:", rew)
         # print("Done shape:", done)
