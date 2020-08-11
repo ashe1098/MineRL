@@ -12,7 +12,8 @@ logging.basicConfig(level=logging.DEBUG)  # ログを見れる
 # coloredlogs.install(logging.INFO)
 
 def random():
-    env = gym.make('MineRLNavigateDense-v0')
+    # env = gym.make('MineRLNavigateDense-v0')
+    env = gym.make('MineRLTreechopVectorObf-v0')
 
     # set the environment to allow interactive connections on port 6666
     # and slow the tick speed to 6666.
@@ -27,8 +28,7 @@ def random():
 
 def target():
     env = gym.make('MineRLNavigateDense-v0')
-    # import datetime  # 開発用
-    # env = gym.wrappers.Monitor(env, "/Users/ashe/workspace/Creation/Capture/" + datetime.datetime.now().isoformat())  # 記録用
+    # env = gym.wrappers.Monitor(env, "/Users/ashe/workspace/Creation/Capture")  # 記録用
 
     env.make_interactive(port=6666, realtime=True)
     obs  = env.reset()
@@ -289,5 +289,22 @@ def kmeans_check():
     print(acts.shape) # 時系列情報は消える
 
 
+def render_on_ipython():
+    import matplotlib.pyplot as plt
+    from IPython import display
+
+    env = gym.make('MineRLNavigateDenseVectorObf-v0')
+
+    obs = env.reset()
+    done = False
+    logging.basicConfig(level=logging.CRITICAL)
+    while not done:
+        action = env.action_space.sample()  # ランダムに動く
+        obs, reward, done, _ = env.step(action)
+        plt.imshow(env.render())  # loggingはオフにしておくこと！
+        display.display(plt.gcf())
+        display.clear_output(wait=True)
+    logging.basicConfig(level=logging.DEBUG)
+
 if __name__ == "__main__":
-    kmeans()
+    random()
