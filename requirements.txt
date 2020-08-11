@@ -4,3 +4,8 @@ coloredlogs
 matplotlib
 opencv-python
 pyro4
+# tensorflow
+sklearn
+pandas
+# chainerrl
+pydot

@@ -101,6 +101,20 @@ class MineRLAgentBase(abc.ABC):
 # YOUR CODE GOES HERE #
 #######################
 
+class Ashgent(MineRLAgentBase):
+    def load_agent(self):
+        pass
+
+    def run_agent_on_episode(self, single_episode_env : Episode):
+        obs = single_episode_env.reset()
+        done = False
+        while not done:
+            action = single_episode_env.action_space.sample()  # ランダムに動く
+            obs, reward, done, _ = single_episode_env.step(action)
+            single_episode_env.render()
+
+
+
 class MineRLMatrixAgent(MineRLAgentBase):
     """
     An example random agent. 
@@ -149,7 +163,7 @@ class MineRLRandomAgent(MineRLAgentBase):
 #####################################################################
 # IMPORTANT: SET THIS VARIABLE WITH THE AGENT CLASS YOU ARE USING   # 
 ######################################################################
-AGENT_TO_TEST = MineRLMatrixAgent # MineRLMatrixAgent, MineRLRandomAgent, YourAgentHere
+AGENT_TO_TEST = Ashgent # MineRLMatrixAgent, MineRLRandomAgent, YourAgentHere
 
 
 

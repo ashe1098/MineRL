@@ -1,0 +1,11 @@
+commit 10aacd242727216c1cb034454750e7e84c10fce7
+Author: ashe1098 <s.aoyama.644@stn.nitech.ac.jp>
+Date:   Mon Jul 20 16:11:07 2020 +0900
+
+    initial commit
+
+commit b1c173a51382c6b8e12b5e3fe81abf960511cd44
+Author: Ashe <56241628+ashe1098@users.noreply.github.com>
+Date:   Sat Jul 18 16:55:44 2020 +0900
+
+    Initial commit

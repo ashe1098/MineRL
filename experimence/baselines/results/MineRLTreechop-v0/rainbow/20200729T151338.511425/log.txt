@@ -1,0 +1,36 @@
+INFO     - 2020-07-29 15:13:38,574 - [__main__ main 105] Output files are saved in results/MineRLTreechop-v0/rainbow/20200729T151338.511425
+INFO     - 2020-07-29 15:13:38,574 - [utils log_versions 9] 3.7.3 (default, Apr 24 2020, 18:51:23) 
+[Clang 11.0.3 (clang-1103.0.32.62)]
+INFO     - 2020-07-29 15:13:38,615 - [utils log_versions 10] absl-py==0.9.0,appnope==0.1.0,astunparse==1.6.3,backcall==0.2.0,cached-property==1.5.1,cachetools==4.1.1,certifi==2020.6.20,chainer==7.4.0,chainerrl==0.8.0,chardet==3.0.4,cloudpickle==1.3.0,coloredlogs==14.0,crowdai-api==0.1.22,cycler==0.10.0,DateTime==4.3,decorator==4.4.2,dill==0.3.2,filelock==3.0.12,future==0.18.2,gast==0.3.3,getch==1.0,google-auth==1.20.0,google-auth-oauthlib==0.4.1,google-pasta==0.2.0,grpcio==1.30.0,gym==0.17.2,h5py==2.10.0,humanfriendly==8.2,idna==2.10,importlib-metadata==1.7.0,ipython==7.16.1,ipython-genutils==0.2.0,jedi==0.17.2,joblib==0.16.0,Keras-Preprocessing==1.1.2,kiwisolver==1.2.0,lxml==4.5.2,Markdown==3.2.2,matplotlib==3.0.3,minerl==0.3.6,numpy==1.18.5,oauthlib==3.1.0,opencv-python==4.3.0.36,opt-einsum==3.3.0,pandas==1.1.0,parso==0.7.1,pexpect==4.8.0,pickleshare==0.7.5,Pillow==7.2.0,pip==20.0.2,prompt-toolkit==3.0.5,protobuf==3.12.2,psutil==5.7.2,ptyprocess==0.6.0,pyasn1==0.4.8,pyasn1-modules==0.2.8,pyglet==1.5.0,Pygments==2.6.1,pyparsing==2.4.7,Pyro4==4.80,python-dateutil==2.8.1,python-gitlab==2.4.0,pytz==2020.1,redis==3.5.3,requests==2.24.0,requests-oauthlib==1.3.0,rsa==4.6,scikit-learn==0.23.1,scipy==1.4.1,serpent==1.30.2,setuptools==46.1.3,six==1.15.0,sklearn==0.0,tensorboard==2.3.0,tensorboard-plugin-wit==1.7.0,tensorflow==2.3.0,tensorflow-estimator==2.3.0,termcolor==1.1.0,threadpoolctl==2.1.0,tqdm==4.48.0,traitlets==4.3.3,typing==3.7.4.3,typing-extensions==3.7.4.2,urllib3==1.25.10,wcwidth==0.2.5,Werkzeug==1.0.1,wheel==0.34.2,wrapt==1.12.1,zipp==3.1.0,zope.interface==5.1.0
+INFO     - 2020-07-29 15:13:38,615 - [__main__ _main 117] The first `gym.make(MineRL*)` may take several minutes. Be patient!
+INFO     - 2020-07-29 15:13:38,728 - [minerl.env.malmo.instance.76b4f4 _launch_minecraft 671] Starting Minecraft process: ['/var/folders/s0/wc1rzmgd4412_bssv_bvdz2r0000gn/T/tmpfzsyue4b/Minecraft/launchClient.sh', '-port', '10639', '-env', '-runDir', '/var/folders/s0/wc1rzmgd4412_bssv_bvdz2r0000gn/T/tmpfzsyue4b/Minecraft/run']
+INFO     - 2020-07-29 15:13:38,733 - [minerl.env.malmo.instance.76b4f4 _launch_process_watcher 694] Starting process watcher for process 32263 @ localhost:10639
+INFO     - 2020-07-29 15:14:16,337 - [minerl.env.malmo.instance.76b4f4 launch 533] Minecraft process ready
+INFO     - 2020-07-29 15:14:16,339 - [minerl.env.malmo log_to_file 548] Logging output of Minecraft to results/MineRLTreechop-v0/rainbow/20200729T151338.511425/logs/mc_1639.log
+INFO     - 2020-07-29 15:14:16,348 - [__main__ wrap_env 213] Detected `gym.wrappers.TimeLimit`! Unwrap it and re-wrap our own time limit.
+INFO     - 2020-07-29 15:14:16,353 - [env_wrappers __init__ 481] always pressing keys: ['attack']
+INFO     - 2020-07-29 15:14:16,353 - [env_wrappers __init__ 487] reversed pressing keys: ['forward']
+INFO     - 2020-07-29 15:14:16,353 - [env_wrappers __init__ 492] always ignored keys: ['back', 'left', 'right', 'sneak', 'sprint']
+INFO     - 2020-07-29 15:14:16,354 - [env_wrappers __init__ 545] Dict(attack:Discrete(2), back:Discrete(2), camera:Box(low=-180.0, high=180.0, shape=(2,)), forward:Discrete(2), jump:Discrete(2), left:Discrete(2), right:Discrete(2), sneak:Discrete(2), sprint:Discrete(2)) is converted to Discrete(5).
+INFO     - 2020-07-29 15:14:16,354 - [__main__ wrap_env 213] Detected `gym.wrappers.TimeLimit`! Unwrap it and re-wrap our own time limit.
+INFO     - 2020-07-29 15:14:16,358 - [env_wrappers __init__ 481] always pressing keys: ['attack']
+INFO     - 2020-07-29 15:14:16,358 - [env_wrappers __init__ 487] reversed pressing keys: ['forward']
+INFO     - 2020-07-29 15:14:16,358 - [env_wrappers __init__ 492] always ignored keys: ['back', 'left', 'right', 'sneak', 'sprint']
+INFO     - 2020-07-29 15:14:16,359 - [env_wrappers __init__ 545] Dict(attack:Discrete(2), back:Discrete(2), camera:Box(low=-180.0, high=180.0, shape=(2,)), forward:Discrete(2), jump:Discrete(2), left:Discrete(2), right:Discrete(2), sneak:Discrete(2), sprint:Discrete(2)) is converted to Discrete(5).
+ERROR    - 2020-07-29 15:14:16,381 - [__main__ main 112] execution failed.
+Traceback (most recent call last):
+  File "dqn_family.py", line 110, in main
+    _main(args)
+  File "dqn_family.py", line 171, in _main
+    batch_accumulator=args.batch_accumulator
+  File "dqn_family.py", line 315, in get_agent
+    batch_accumulator=batch_accumulator, phi=phi)
+  File "/Users/ashe/.local/share/virtualenvs/MineRL-APCPXVva/lib/python3.7/site-packages/chainerrl/agents/dqn.py", line 154, in __init__
+    cuda.get_device_from_id(gpu).use()
+  File "/Users/ashe/.local/share/virtualenvs/MineRL-APCPXVva/lib/python3.7/site-packages/chainer/backends/cuda.py", line 279, in get_device_from_id
+    check_cuda_available()
+  File "/Users/ashe/.local/share/virtualenvs/MineRL-APCPXVva/lib/python3.7/site-packages/chainer/backends/cuda.py", line 142, in check_cuda_available
+    raise RuntimeError(msg)
+RuntimeError: CUDA environment is not correctly set up
+(see https://github.com/chainer/chainer#installation).No module named 'cupy'
+INFO     - 2020-07-29 15:14:19,502 - [minerl.env.malmo on_terminate 373] Minecraft process psutil.Process(pid=32263, status='terminated', exitcode=0, started='15:13:38') terminated with exit code 0
