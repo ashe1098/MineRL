@@ -28,6 +28,10 @@ scikit-learn = "*"
 torch = "*"
 pfrl = "*"
 DateTime = "*"
+numpy = "*"
+scipy = "*"
+tqdm = "*"
+joblib = "*"
 
 [requires]
 python_version = "3.7"
