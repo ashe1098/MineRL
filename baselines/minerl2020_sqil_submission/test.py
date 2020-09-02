@@ -6,7 +6,7 @@ import os
 import threading
 from mod.env_wrappers import wrap_env
 from mod.cached_kmeans import cached_kmeans
-from reward_boundary_calculator import cached_reward_boundary
+from mod.reward_boundary_calculator import cached_reward_boundary
 from mod.sqil import get_agent
 from mod.data.pipeline_wrapper import DataPipelineWrapper
 
@@ -167,6 +167,7 @@ class MineRLMatrixAgent(MineRLAgentBase):
         done = False
         while not done:
             obs,reward,done,_ = single_episode_env.step(self.act(self.flatten_obs(obs)))
+            # single_episode_env.env.render()  # ようわからんエラー
 
 
 class MineRLRandomAgent(MineRLAgentBase):
@@ -283,5 +284,57 @@ def main():
     for thread in evaluator_threads:
         thread.join()
 
+
+def render():
+    assert MINERL_MAX_EVALUATION_EPISODES > 0
+    assert EVALUATION_THREAD_COUNT > 0
+
+    # Create the parallel envs (sequentially to prevent issues!)
+    kmeans_normal = cached_kmeans(
+        cache_dir='./train/kmeans_cache/',
+        env_id=MINERL_GYM_ENV,
+        n_clusters=KMEANS_N_CLUSTERS,
+        random_state=KMEANS_SEED,
+        sample_by_trajectory=True,
+        only_vector_converter=False)
+    kmeans_vector_converter = cached_kmeans(
+        cache_dir='./train/kmeans_cache/',
+        env_id=MINERL_GYM_ENV,
+        n_clusters=KMEANS_N_CLUSTERS_VC,
+        random_state=KMEANS_SEED,
+        sample_by_trajectory=True,
+        only_vector_converter=True)
+
+    def wrapper(env):
+        return wrap_env(
+            env=env, test=True, monitor=False, outdir=None,
+            env_id=MINERL_GYM_ENV,  # added
+            frame_skip=FRAME_SKIP, gray_scale=GRAY_SCALE, frame_stack=FRAME_STACK,
+            randomize_action=False, eval_epsilon=EVAL_EPSILON,
+            action_choices=kmeans_normal.cluster_centers_,
+            action_choices_vector_converter=kmeans_vector_converter.cluster_centers_,
+            append_reward_channel=(OPTION_N_GROUPS > 1),
+        )
+
+    env = wrapper(gym.make(MINERL_GYM_ENV))
+    agent = AGENT_TO_TEST(env)
+    assert isinstance(agent, MineRLAgentBase)
+    agent.load_agent()
+
+    # agent.run_agent_on_episode(Episode(env))
+
+    env.make_interactive(port=6666, realtime=True)
+    obs = env.reset()
+    done = False
+    net_reward = 0
+    while not done:
+        a = agent.agent.act(obs)  # gymのメソッド？
+        obs, reward, done, info = env.step(a)
+        env.render()  # おそらくmain()の方は，並列処理やらフレームスキップやらでレンダリングできないのかと
+
+        net_reward += reward
+        print("Total reward: ", net_reward)
+
 if __name__ == "__main__":
-    main()
+    # main()
+    render()
