@@ -1,0 +1,21 @@
+diff --git a/baselines/minerl2020_rainbow_submission/train.py b/baselines/minerl2020_rainbow_submission/train.py
+index 5e9eb62..1df92f7 100644
+--- a/baselines/minerl2020_rainbow_submission/train.py
++++ b/baselines/minerl2020_rainbow_submission/train.py
+@@ -77,3 +77,16 @@ def main():
+ 
+ if __name__ == "__main__":
+     main()
++
++    # EVALUATION_RUNNING_ON = os.getenv('EVALUATION_RUNNING_ON', None)
++    # EVALUATION_STAGE = os.getenv('EVALUATION_STAGE', 'all')
++    # EXITED_SIGNAL_PATH = os.getenv('EXITED_SIGNAL_PATH', 'shared/exited')
++    # # Training Phase
++    # if EVALUATION_STAGE in ['all', 'training']:
++    #     aicrowd_helper.training_start()
++    #     try:
++    #         main()
++    #         aicrowd_helper.training_end()
++    #     except Exception as e:
++    #         aicrowd_helper.training_error()
++    #         print(e)

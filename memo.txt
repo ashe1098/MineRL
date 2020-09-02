@@ -1,0 +1,6 @@
+pipenvのlockingができない
+pipenv lockしようとすると
+pexpect.exceptions.TIMEOUT: <pexpect.popen_spawn.PopenSpawn object at 0x7f4386599b70>
+が吐かれる
+
+pipenv install --skip-lockでPipfileからとりあえずインストールしてる状態
