@@ -6,7 +6,7 @@ import os
 import threading
 from mod.env_wrappers import wrap_env
 from mod.cached_kmeans import cached_kmeans
-from mod.reward_boundary_calculator import cached_reward_boundary
+from reward_boundary_calculator import cached_reward_boundary
 from mod.sqil import get_agent
 from mod.data.pipeline_wrapper import DataPipelineWrapper
 
@@ -23,7 +23,7 @@ import coloredlogs
 coloredlogs.install(logging.DEBUG)
 
 # Agent settings
-GPU = -1
+GPU = 0
 
 ARCH = 'dueling'
 KMEANS_N_CLUSTERS = 30
