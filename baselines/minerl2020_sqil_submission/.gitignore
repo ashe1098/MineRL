@@ -1,4 +1,5 @@
 data/
+!mod/data/  # 無視しちゃダメ
 shared/
 logs/
 .gradle/
